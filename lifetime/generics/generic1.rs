@@ -10,3 +10,5 @@ fn main() {
     print_max::<u16>(123, 321);
     print_max(3.14, 1.414);
 }
+
+//will not work since the compiler cannot determine the type of the variable
