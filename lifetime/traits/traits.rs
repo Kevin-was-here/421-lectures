@@ -5,8 +5,10 @@ use std::cmp::Ordering;
 struct Point {
     x: f32,
     y: f32,
-}
+} //made our own type 
 
+
+//implement partialORD for point
 // PartialOrd requires PartialEq
 impl std::cmp::PartialEq for Point {
     fn eq(&self, other: &Self) -> bool {
@@ -14,10 +16,14 @@ impl std::cmp::PartialEq for Point {
     }
 }
 
-impl std::cmp::PartialOrd for Point {
+
+// requires Eq
+impl std::cmp::PartialOrd for Point { 
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         let lhs = self.x*self.x + self.y*self.y;
         let rhs = other.x*other.x + other.y*other.y;
+
+        //ordering is an enum 
         if lhs < rhs {
             Some(Ordering::Less)
         }
