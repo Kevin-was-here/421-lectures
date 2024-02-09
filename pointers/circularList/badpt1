@@ -1,0 +1,26 @@
+struct DLNode<T> {
+    next: Weak<DLNode<T>>,
+    prev: Weak<DLNode<T>>,
+    val: T,
+}
+
+impl<T: std::default::Default> DLNode<T> {
+    fn new(val: T, next: Weak<DLNode<T>>, prev: Weak<DLNode<T>>) -> DLNode<T> {
+        DLNode { next, prev, val }
+    }
+
+    fn empty() -> Rc<Self> {
+        Rc::new_cyclic(|me| {
+            DLNode {
+                next: me.clone(),
+                prev: me.clone(),
+                val: Default::default(),
+            }
+        })
+    }
+}
+
+struct DList<T> {
+    //will not work because this is immutable, need to be weak
+    root: Rc<DLNode<T>>,
+}
