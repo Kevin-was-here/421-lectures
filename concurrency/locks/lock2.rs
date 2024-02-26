@@ -13,6 +13,8 @@ fn main() {
 
             *num += 1;
         });
+        //fails here because RC is not thread safe
+
         handles.push(handle);
     }
 

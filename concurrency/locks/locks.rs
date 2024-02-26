@@ -10,6 +10,8 @@ fn main() {
                 let mut val = counter.lock().unwrap();
                 *val = i;
             }
+
+            //normally if you locking a struct its not safe for read and write
             println!("number {:?} from the spawned thread!", counter);
             thread::sleep(Duration::from_millis(1));
         }
